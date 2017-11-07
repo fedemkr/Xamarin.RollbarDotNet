@@ -37,7 +37,7 @@ namespace RollbarDotNet
                 var response = JsonConvert.DeserializeObject<RollbarResponse>(stringResult);
                 if (response.Error > 0 || response.Result == null)
                 {
-                    Debug.WriteLine("[RollbarDotNet] Unable to deserialize the response of the request.");
+                    Debug.WriteLine("[RollbarDotNet] Unable to deserialize the response of the request.\nResponse:" + stringResult);
                     return Guid.Empty;
                 }
 
@@ -49,7 +49,7 @@ namespace RollbarDotNet
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("[RollbarDotNet] Unable to parse the response of the request.");
+                Debug.WriteLine("[RollbarDotNet] Unable to parse the response of the request.\nResponse:" + stringResult);
                 Debug.WriteLine(ex);
                 return Guid.Empty;
             }
@@ -67,7 +67,7 @@ namespace RollbarDotNet
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("[RollbarDotNet] The request sent to the api failed.");
+                Debug.WriteLine("[RollbarDotNet] The request sent to the api failed.\nUrl:" + url);
                 Debug.WriteLine(ex);
                 return string.Empty;
             }
@@ -85,7 +85,7 @@ namespace RollbarDotNet
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("[RollbarDotNet] The request sent to the api failed.");
+                Debug.WriteLine("[RollbarDotNet] The request sent to the api failed.\nUrl:" + url);
                 Debug.WriteLine(ex);
                 return string.Empty;
             }
